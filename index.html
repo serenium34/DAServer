@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デジタルアーツ同好会</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === 基本設定 === */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f4f4f4; /* 全体の背景色 */
+        }
+
+        /* === スクロールアニメーション用クラス === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === 1. トップ（ヒーローセクション） === */
+        .hero {
+            position: relative;
+            height: 100vh; /* 画面いっぱいの高さ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            
+            /* ▼▼▼ ここで背景写真を設定します ▼▼▼ */
+            /* 現在はダミー画像を入れています。自分の写真を使う場合は url('画像ファイル名.jpg') に書き換えてください */
+            background-image: url('Sample.png'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 背景画像を暗くして文字を見やすくするオーバーレイ */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5); 
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem; /* 文字サイズ */
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.1em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* === 共通セクションスタイル === */
+        section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #333;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* === 2. 同好会名セクション === */
+        .club-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* === 3. メンバーリスト === */
+        .member-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .member-item {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .member-item:hover {
+            transform: translateY(-5px); /* マウスを乗せると少し浮く */
+        }
+
+        /* === 4. 作品展示エリア（プレースホルダー） === */
+        .works-placeholder {
+            border: 2px dashed #ccc;
+            padding: 50px;
+            color: #777;
+            background: #fff;
+        }
+
+        /* === 5. 募集セクション === */
+        .btn-apply {
+            display: inline-block;
+            background-color: #333; /* ボタンの色 */
+            color: white;
+            padding: 15px 50px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .btn-apply:hover {
+            background-color: #555;
+        }
+
+        .recruit-info {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .recruit-info h3 {
+            border-left: 5px solid #333;
+            padding-left: 10px;
+            margin-top: 0;
+        }
+
+        /* === スマホ向け調整 (レスポンシブ) === */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            section {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content fade-in">
+            <h1 class="hero-title">やりたいことを<br>やりたいように</h1>
+        </div>
+    </header>
+
+    <section id="about" class="fade-in">
+        <h2>About</h2>
+        <div class="club-name">
+            デジタルアーツ同好会
+        </div>
+        <p>私たちは各々のクリエイティブなスキルを発信できる環境づくりを目的としています<br>
+            イラスト，作曲，演奏，撮影，3Dアートなど<br>
+            「作ってみたけど自己満で終わった」<br>
+            「やってみたいけどひとりじゃちょっと...」<br>
+            そんなあなたにぴったりの環境で私たちと一緒に始めてみませんか？</p>
+    </section>
+
+    <section id="members" class="fade-in">
+        <h2>Members</h2>
+        <ul class="member-list">
+            <li class="member-item">大石 竜誠</li>
+            <li class="member-item">中尾 涼馳</li>
+            <li class="member-item">長谷部 凛</li>
+            <li class="member-item">奥村 晴</li>
+            <li class="member-item">橋口 伶矢</li>
+            <li class="member-item">北御門 翔一</li>
+            <li class="member-item">山本 真音</li>
+            <li class="member-item">嶋崎 隆也</li>
+            <li class="member-item">大嶋 小春</li>
+            <li class="member-item">谷口 蒼太郎</li>
+            </ul>
+    </section>
+
+    <section id="gallery" class="fade-in">
+        <h2>Works</h2>
+        
+        <div class="works-placeholder">
+            <p>※ ここに各メンバーの作品が展示されます ※</p>
+            <p>(準備中)</p>
+        </div>
+        </section>
+
+    <section id="recruit" class="fade-in">
+        <h2>Recruit</h2>
+        
+        <a href="https://example.com/apply" class="btn-apply" target="_blank">応募ページへ</a>
+
+        <div class="recruit-info">
+            <h3>募集要項<span class="selection-note">（選考あり）</span></h3>
+            <ul>
+                <li><strong>活動内容：</strong>イラスト、3DCG、音楽制作、動画編集、Webデザインなど</li>
+                <!-- <li><strong>活動日：</strong>毎週 水曜日・金曜日 16:00〜</li>
+                <li><strong>場所：</strong>第2パソコン室</li> -->
+                <li><strong>対象：</strong>学年・学科不問。スキルはあるけど発信する環境のない人！</li>
+                <li><strong>持ち物：</strong>やる気と自由な発想</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer style="background:#333; color:#fff; padding:20px; text-align:center;">
+        <p>&copy; デジタルアーツ同好会</p>
+    </footer>
+
+    <script>
+        // 画面に要素が入ってきたら 'visible' クラスをつける設定
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // 要素が10%見えたらアニメーション開始
+        });
+
+        // 監視対象の要素を取得
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
