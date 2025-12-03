@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>デジタルアーツ同好会</title>
+    <title>デジタルアーツ同好会</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* === 基本設定 === */
+        /* === 基本設定 === */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Noto Sans JP', sans-serif;
             color: #333;
             line-height: 1.6;
-            background-color: #f4f4f4; /* 全体の背景色 */
+            background-color: #f4f4f4; /* 全体の背景色 */
         }
 
-        /* === スクロールアニメーション用クラス === */
+        /* === スクロールアニメーション用クラス === */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -32,24 +32,24 @@
             transform: translateY(0);
         }
 
-        /* === 1. トップ（ヒーローセクション） === */
+        /* === 1. トップ（ヒーローセクション） === */
         .hero {
             position: relative;
-            height: 100vh; /* 画面いっぱいの高さ */
+            height: 100vh; /* 画面いっぱいの高さ */
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
             text-align: center;
             
-            /* ▼▼▼ ここで背景写真を設定します ▼▼▼ */
-            /* 現在はダミー画像を入れています。自分の写真を使う場合は url('画像ファイル名.jpg') に書き換えてください */
+            /* ▼▼▼ ここで背景写真を設定します ▼▼▼ */
+            /* 現在はダミー画像を入れています。自分の写真を使う場合は url('画像ファイル名.jpg') に書き換えてください */
             background-image: url('Sample.png'); 
             background-size: cover;
             background-position: center;
         }
 
-        /* 背景画像を暗くして文字を見やすくするオーバーレイ */
+        /* 背景画像を暗くして文字を見やすくするオーバーレイ */
         .hero::before {
             content: '';
             position: absolute;
@@ -64,14 +64,14 @@
         }
 
         .hero-title {
-            font-size: 3rem; /* 文字サイズ */
+            font-size: 3rem; /* 文字サイズ */
             font-weight: 700;
             margin: 0;
             letter-spacing: 0.1em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* === 共通セクションスタイル === */
+        /* === 共通セクションスタイル === */
         section {
             padding: 80px 20px;
             max-width: 1000px;
@@ -87,13 +87,13 @@
             padding-bottom: 10px;
         }
 
-        /* === 2. 同好会名セクション === */
+        /* === 2. 同好会名セクション === */
         .club-name {
             font-size: 1.5rem;
             font-weight: bold;
         }
 
-        /* === 3. メンバーリスト === */
+        /* === 3. メンバーリスト === */
         .member-list {
             display: flex;
             flex-wrap: wrap;
@@ -113,10 +113,10 @@
         }
 
         .member-item:hover {
-            transform: translateY(-5px); /* マウスを乗せると少し浮く */
+            transform: translateY(-5px); /* マウスを乗せると少し浮く */
         }
 
-        /* === 4. 作品展示エリア（プレースホルダー） === */
+        /* === 4. 作品展示エリア（プレースホルダー） === */
         .works-placeholder {
             border: 2px dashed #ccc;
             padding: 50px;
@@ -124,10 +124,10 @@
             background: #fff;
         }
 
-        /* === 5. 募集セクション === */
+        /* === 5. 募集セクション === */
         .btn-apply {
             display: inline-block;
-            background-color: #333; /* ボタンの色 */
+            background-color: #333; /* ボタンの色 */
             color: white;
             padding: 15px 50px;
             font-size: 1.2rem;
@@ -157,7 +157,7 @@
             margin-top: 0;
         }
 
-        /* === スマホ向け調整 (レスポンシブ) === */
+        /* === スマホ向け調整 (レスポンシブ) === */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 1.8rem;
@@ -175,35 +175,35 @@
 
     <header class="hero">
         <div class="hero-content fade-in">
-            <h1 class="hero-title">やりたいことを<br>やりたいように</h1>
+            <h1 class="hero-title">やりたいことを<br>やりたいように</h1>
         </div>
     </header>
 
     <section id="about" class="fade-in">
         <h2>About</h2>
         <div class="club-name">
-            デジタルアーツ同好会
+            デジタルアーツ同好会
         </div>
-        <p>私たちは各々のクリエイティブなスキルを発信できる環境づくりを目的としています<br>
-            イラスト，作曲，演奏，撮影，3Dアートなど<br>
-            「作ってみたけど自己満で終わった」<br>
-            「やってみたいけどひとりじゃちょっと...」<br>
-            そんなあなたにぴったりの環境で私たちと一緒に始めてみませんか？</p>
+        <p>私たちは各々のクリエイティブなスキルを発信できる環境づくりを目的としています<br>
+            イラスト，作曲，演奏，撮影，3Dアートなど<br>
+            「作ってみたけど自己満で終わった」<br>
+            「やってみたいけどひとりじゃちょっと...」<br>
+            そんなあなたにぴったりの環境で私たちと一緒に始めてみませんか？</p>
     </section>
 
     <section id="members" class="fade-in">
         <h2>Members</h2>
         <ul class="member-list">
-            <li class="member-item">大石 竜誠</li>
-            <li class="member-item">中尾 涼馳</li>
-            <li class="member-item">長谷部 凛</li>
-            <li class="member-item">奥村 晴</li>
-            <li class="member-item">橋口 伶矢</li>
-            <li class="member-item">北御門 翔一</li>
-            <li class="member-item">山本 真音</li>
-            <li class="member-item">嶋崎 隆也</li>
-            <li class="member-item">大嶋 小春</li>
-            <li class="member-item">谷口 蒼太郎</li>
+            <li class="member-item">大石 竜誠</li>
+            <li class="member-item">中尾 涼馳</li>
+            <li class="member-item">長谷部 凛</li>
+            <li class="member-item">奥村 晴</li>
+            <li class="member-item">橋口 伶矢</li>
+            <li class="member-item">北御門 翔一</li>
+            <li class="member-item">山本 真音</li>
+            <li class="member-item">嶋崎 隆也</li>
+            <li class="member-item">大嶋 小春</li>
+            <li class="member-item">谷口 蒼太郎</li>
             </ul>
     </section>
 
@@ -211,34 +211,34 @@
         <h2>Works</h2>
         
         <div class="works-placeholder">
-            <p>※ ここに各メンバーの作品が展示されます ※</p>
-            <p>(準備中)</p>
+            <p>※ ここに各メンバーの作品が展示されます ※</p>
+            <p>(準備中)</p>
         </div>
         </section>
 
     <section id="recruit" class="fade-in">
         <h2>Recruit</h2>
         
-        <a href="https://example.com/apply" class="btn-apply" target="_blank">応募ページへ</a>
+        <a href="https://example.com/apply" class="btn-apply" target="_blank">応募ページへ</a>
 
         <div class="recruit-info">
-            <h3>募集要項<span class="selection-note">（選考あり）</span></h3>
+            <h3>募集要項<span class="selection-note">（選考あり）</span></h3>
             <ul>
-                <li><strong>活動内容：</strong>イラスト、3DCG、音楽制作、動画編集、Webデザインなど</li>
-                <!-- <li><strong>活動日：</strong>毎週 水曜日・金曜日 16:00〜</li>
-                <li><strong>場所：</strong>第2パソコン室</li> -->
-                <li><strong>対象：</strong>学年・学科不問。スキルはあるけど発信する環境のない人！</li>
-                <li><strong>持ち物：</strong>やる気と自由な発想</li>
+                <li><strong>活動内容：</strong>イラスト、3DCG、音楽制作、動画編集、Webデザインなど</li>
+                <!-- <li><strong>活動日：</strong>毎週 水曜日・金曜日 16:00〜</li>
+                <li><strong>場所：</strong>第2パソコン室</li> -->
+                <li><strong>対象：</strong>学年・学科不問。スキルはあるけど発信する環境のない人！</li>
+                <li><strong>持ち物：</strong>やる気と自由な発想</li>
             </ul>
         </div>
     </section>
 
     <footer style="background:#333; color:#fff; padding:20px; text-align:center;">
-        <p>&copy; デジタルアーツ同好会</p>
+        <p>&copy; デジタルアーツ同好会</p>
     </footer>
 
     <script>
-        // 画面に要素が入ってきたら 'visible' クラスをつける設定
+        // 画面に要素が入ってきたら 'visible' クラスをつける設定
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -246,10 +246,10 @@
                 }
             });
         }, {
-            threshold: 0.1 // 要素が10%見えたらアニメーション開始
+            threshold: 0.1 // 要素が10%見えたらアニメーション開始
         });
 
-        // 監視対象の要素を取得
+        // 監視対象の要素を取得
         const fadeElements = document.querySelectorAll('.fade-in');
         fadeElements.forEach(el => observer.observe(el));
     </script>
