@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>デジタルアーツ同好会</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === 基本設定 === */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f4f4f4; /* 全体の背景色 */
+        }
+
+        /* === スクロールアニメーション用クラス === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === 1. トップ（ヒーローセクション） === */
+        .hero {
+            position: relative;
+            height: 100vh; /* 画面いっぱいの高さ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            
+            /* ▼▼▼ ここで背景写真を設定します ▼▼▼ */
+            /* 現在はダミー画像を入れています。自分の写真を使う場合は url('画像ファイル名.jpg') に書き換えてください */
+            background-image: url('Sample.png'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 背景画像を暗くして文字を見やすくするオーバーレイ */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5); 
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem; /* 文字サイズ */
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.1em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* === 共通セクションスタイル === */
+        section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #333;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        <!--
+         /* === 2. 同好会名セクション === */
+        .club-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        -->
+
+        /* === 3. リンクリスト === */
+        .link-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .link-item {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .link-item:hover {
+            transform: translateY(-5px); /* マウスを乗せると少し浮く */
+        }
+
+        /* === 4. 作品展示エリア（プレースホルダー） === */
+        .works-placeholder {
+            border: 2px dashed #ccc;
+            padding: 50px;
+            color: #777;
+            background: #fff;
+        }
+
+        /* === スマホ向け調整 (レスポンシブ) === */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            section {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="about" class="fade-in">
+        <h2>大石竜誠</h2>
+        <div class="artist">
+            アーティスト名：Serenium
+        </div>
+        <p>作曲をメインに活動しています<br></p>
+        <ul class="link-list">
+            <li class="link-item"><a href="">Instagram</a></li>
+            <li class="link-item"><a href="">SoundCloud</a></li>
+        </ul>
+    </section>
+
+    <section id="gallery" class="fade-in">
+        <h2>Works</h2>
+        
+        <div class="works-placeholder">
+            <p>※ ここに作品が展示されます ※</p>
+            <p>(準備中)</p>
+        </div>
+        </section>
+
+    <section id="info" class="fade-in">
+        <h2>Information</h2>
+        <p><a href="te22oishi@g.kumamoto-nct.ac.jp">メールアドレス：te22oishi@g.kumamoto-nct.ac.jp</p>
+    </section>
+
+    <footer style="background:#333; color:#fff; padding:20px; text-align:center;">
+        <p>&copy; デジタルアーツ同好会</p>
+    </footer>
+
+    <script>
+        // 画面に要素が入ってきたら 'visible' クラスをつける設定
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // 要素が10%見えたらアニメーション開始
+        });
+
+        // 監視対象の要素を取得
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
