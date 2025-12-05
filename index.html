@@ -116,6 +116,33 @@
             transform: translateY(-5px); /* マウスを乗せると少し浮く */
         }
 
+        /* 追加: 名前リンクを青下線からサイトに合うボタン風に変更 */
+        .member-item a {
+            color: #333;                         /* ページの文字色に合わせる */
+            text-decoration: none;               /* 下線を消す */
+            /* display: inline-block;
+            padding: 8px 14px;
+            border-radius: 6px;
+            background: linear-gradient(180deg,#fff,#fafafa);
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            transition: color 0.15s, transform 0.15s, box-shadow 0.15s;
+            font-weight: 600; */
+        }
+
+        .member-item a:hover,
+        .member-item a:focus {
+            color: #007bff;                      /* ホバー時のアクセント色 */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            outline: none;
+        }
+
+        .member-item a:focus {
+            outline: 3px solid rgba(0,123,255,0.12); /* キーボード操作でのフォーカス可視化 */
+            outline-offset: 2px;
+        }
+
         /* === 4. 作品展示エリア（プレースホルダー） === */
         .works-placeholder {
             border: 2px dashed #ccc;
@@ -170,7 +197,7 @@
             }
         }
         
-      /* 共通のスタイル（前回と同じ） */
+      /* 共通のスタイル */
         .advisor-simple-section {
           max-width: 600px;
           margin: 40px auto;
@@ -215,7 +242,7 @@
           color: #333; /* 文字だけの場合の色 */
         }
 
-        /* ▼▼▼ 追加したボタンスタイル ▼▼▼ */
+        /* ボタンスタイル */
         .coach-button {
           display: inline-block;
           text-decoration: none;     /* 下線を消す */
@@ -232,6 +259,35 @@
           background-color: #0056b3; /* 少し濃い青になる */
           cursor: pointer;
         }
+
+        /* === 4. 作品展示エリア（プレースホルダー） === */
+        .works-placeholder {
+            border: 2px dashed #ccc;
+            padding: 50px;
+            color: #777;
+            background: #fff;
+        }
+
+        /* 画像を枠に合わせる（幅にフィット） */
+        .works-placeholder img {
+            display: block;
+            width: 100%;         /* 枠の幅に合わせる */
+            max-width: 100%;
+            height: auto;        /* アスペクト比を保持してリサイズ */
+            margin: 0 0 1rem 0;
+            border-radius: 6px;
+            object-fit: cover;   /* 高さを固定して切り抜く場合に有効 */
+        }
+
+        /* オプション：サムネイルを等しい高さで揃えたい場合 */
+        .works-placeholder .work-image {
+            width: 100%;
+            height: 220px;       /* 好きな高さに調整 */
+            object-fit: cover;   /* はみ出し部分を切り抜く */
+            display: block;
+            border-radius: 6px;
+            margin: 0 0 1rem 0;
+        }
     </style>
 </head>
 <body>
@@ -245,7 +301,8 @@
     <section id="about" class="fade-in">
         <h2>About</h2>
         <div class="club-name">
-            デジタルアーツ同好会
+            <h1>デジタルアーツ同好会</h1>
+            <h3>Digital Arts Club</h3>
         </div>
         <p>私たちは各々のクリエイティブなスキルを発信できる環境づくりを目的としています<br>
             イラスト，作曲，演奏，撮影，3Dアートなど<br>
@@ -254,6 +311,8 @@
             そんなあなたにぴったりの環境で私たちと一緒に始めてみませんか？</p>
     </section>
 
+    <section id="advisors" class="fade-in">
+        <h2>Advisors</h2>
       <div class="advisor-simple-section">
         <h3 class="advisor-header">顧問紹介</h3>
         
@@ -269,7 +328,7 @@
           </li>
         </ul>
       </div>
-
+    </section>
 
     <section id="members" class="fade-in">
         <h2>Members</h2>
@@ -291,8 +350,16 @@
         <h2>Works</h2>
         
         <div class="works-placeholder">
-            <p>活動内容を掲示します</p>
-            <p>(準備中)</p>
+            <h3>電波祭２０２５で模擬店「音楽室４０４」を出店しました！</h3>
+            <p><img src="電波祭1.jpg" alt="an image at DJ"></p>
+            <p>DJブースを設置，メンバーが作った音楽やDTMミュージックをBGMにつかってます</p>
+            <p><img src="電波祭2.jpg" alt="an image at Fireworks with guitar"></p>
+            <p>ギター演奏に合わせて花火が上がるサウンドビジュアル体験！</p>
+            <p><img src="電波祭3.jpg" alt="an image of exhibition of painting"></p>
+            <p>メンバーのイラストの展示も行いました!高いもので2万円だそうです😮</p>
+            <p><img src="電波祭4.jpg" alt="an image of pixcel art"></p>
+            <p>ドット絵のデジタルアートも展示しました！</p>
+            <p>今後も同好会での活動をどんどん紹介していく予定ですのでお楽しみに！</p>
         </div>
         </section>
 
