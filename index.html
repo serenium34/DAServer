@@ -169,6 +169,69 @@
                 padding: 50px 20px;
             }
         }
+        
+      /* 共通のスタイル（前回と同じ） */
+        .advisor-simple-section {
+          max-width: 600px;
+          margin: 40px auto;
+          font-family: sans-serif;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          overflow: hidden;
+        }
+        .advisor-header {
+          background-color: #f0f0f0;
+          padding: 15px;
+          margin: 0;
+          font-size: 1.2em;
+          text-align: center;
+          border-bottom: 1px solid #ccc;
+        }
+        .advisor-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .advisor-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center; /* 上下中央揃え（ボタンがズレないように） */
+          padding: 15px 20px;
+          border-bottom: 1px solid #eee;
+        }
+        .advisor-row:last-child {
+          border-bottom: none;
+        }
+        .role-label {
+          font-weight: bold;
+          color: #555;
+          background-color: #eef;
+          padding: 4px 10px;
+          border-radius: 4px;
+          font-size: 0.9em;
+        }
+        .teacher-name {
+          font-size: 1.1em;
+          color: #333; /* 文字だけの場合の色 */
+        }
+
+        /* ▼▼▼ 追加したボタンスタイル ▼▼▼ */
+        .coach-button {
+          display: inline-block;
+          text-decoration: none;     /* 下線を消す */
+          background-color: #007bff; /* ボタンの色（青） */
+          color: white !important;   /* 文字色を白に強制 */
+          padding: 8px 16px;         /* ボタンの大きさ */
+          border-radius: 5px;        /* 角丸 */
+          font-size: 1em;
+          transition: background-color 0.2s; /* ホバー時の動きを滑らかに */
+        }
+        
+        /* マウスを乗せた時の色 */
+        .coach-button:hover {
+          background-color: #0056b3; /* 少し濃い青になる */
+          cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -191,19 +254,36 @@
             そんなあなたにぴったりの環境で私たちと一緒に始めてみませんか？</p>
     </section>
 
+      <div class="advisor-simple-section">
+        <h3 class="advisor-header">顧問紹介</h3>
+        
+        <ul class="advisor-list">
+          <li class="advisor-row">
+            <span class="role-label">顧問</span>
+            <span class="teacher-name">永田　和生 先生</span>
+          </li>
+          
+          <li class="advisor-row">
+            <span class="role-label">コーチ</span>
+            <a href="https://serenium34.github.io/DAServer/toyama.html" class="coach-button">AE1 遠山　浩盛</a>
+          </li>
+        </ul>
+      </div>
+
+
     <section id="members" class="fade-in">
         <h2>Members</h2>
         <ul class="member-list">
-            <li class="member-item">大石 竜誠</li>
-            <li class="member-item">中尾 涼馳</li>
-            <li class="member-item">長谷部 凛</li>
-            <li class="member-item">奥村 晴</li>
-            <li class="member-item">橋口 伶矢</li>
-            <li class="member-item">北御門 翔一</li>
-            <li class="member-item">山本 真音</li>
-            <li class="member-item">嶋崎 隆也</li>
-            <li class="member-item">大嶋 小春</li>
-            <li class="member-item">谷口 蒼太郎</li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/oishi.html">大石 竜誠</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/nakao.html">中尾 涼馳</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/hasebe.html">長谷部 凛</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/okumura.html">奥村 晴</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/hashiguchi.html">橋口 伶矢</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/kitamikado.html">北御門 翔一</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/yamamoto.html">山本 真音</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/simasaki.html">嶋崎 隆也</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/oshima.html">大嶋 小春</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/taniguchi.html">谷口 蒼太郎</a></li>
             </ul>
     </section>
 
@@ -211,7 +291,7 @@
         <h2>Works</h2>
         
         <div class="works-placeholder">
-            <p>※ ここに各メンバーの作品が展示されます ※</p>
+            <p>活動内容を掲示します</p>
             <p>(準備中)</p>
         </div>
         </section>
@@ -225,8 +305,6 @@
             <h3>募集要項<span class="selection-note">（選考あり）</span></h3>
             <ul>
                 <li><strong>活動内容：</strong>イラスト、3DCG、音楽制作、動画編集、Webデザインなど</li>
-                <!-- <li><strong>活動日：</strong>毎週 水曜日・金曜日 16:00〜</li>
-                <li><strong>場所：</strong>第2パソコン室</li> -->
                 <li><strong>対象：</strong>学年・学科不問。スキルはあるけど発信する環境のない人！</li>
                 <li><strong>持ち物：</strong>やる気と自由な発想</li>
             </ul>
