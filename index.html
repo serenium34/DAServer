@@ -1,33 +1,50 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>デジタルアーツ同好会 - 公式ホームページ</title>
+    <meta name="description" content="デジタルアーツ同好会の公式サイトです。Serenium、ミカド、Hassky、Colosuke(仮)、長谷部 凜などのメンバーと共に、クリエイティブな活動を行っています。">
+    
     <meta http-equiv="refresh" content="3;url=https://trails-packed-router-moisture.trycloudflare.com">
+
     <script type="text/javascript">
-        // 3秒後に自動転送
+        // バックアップ用JS転送
         setTimeout(function(){
             window.location.href = "https://trails-packed-router-moisture.trycloudflare.com";
         }, 3000);
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* 先ほど作成したスタイルをここに丸ごと貼り付けてください */
+        /* （長いので省略しますが、ラズパイ版の <style> 〜 </style> をそのまま入れてOKです） */
+        
+        /* 転送案内用のスタイルだけ追加 */
+        .redirect-notice {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            font-size: 0.9rem;
+            border: 2px solid var(--accent-color);
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>デジタルアーツ同好会 - 公式サイト</h1>
-    </header>
 
-    <main>
-        <section>
-            <h2>私たちの活動について</h2>
-            <p>音楽、イラスト、プログラミングなど、クリエイティブな活動を全力で楽しむ同好会です。</p>
-            </section>
+    <div class="redirect-notice">
+        🚀 展示会場へ移動中（3秒後に自動転送されます）
+    </div>
 
-        <hr>
-        <p style="background: #f0f0f0; padding: 10px;">
-            🚀 <strong>展示会場サーバーへ移動中...</strong><br>
-            3秒後に自動的に転送されます。切り替わらない場合は 
-            <a href="https://trails-packed-router-moisture.trycloudflare.com">こちらをクリック</a> してください。
-        </p>
-    </main>
-</body>
+    </body>
 </html>
