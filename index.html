@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>デジタルアーツ同好会 - 公式ホームページ</title>
-    <meta name="description" content="デジタルアーツ同好会の公式サイトです。Serenium、ミカド、Hassky、Colosuke(仮)、長谷部 凜などのメンバーと共に、クリエイティブな活動を行っています。">
+    <meta name="description" content="デジタルアーツ同好会の公式サイトです。以下のメンバーと共に、クリエイティブな活動を行っています。Serenium・ミカド・Hassky・Colosuke(仮)・長谷部 凜">
     
     <meta http-equiv="refresh" content="3;url=https://trails-packed-router-moisture.trycloudflare.com">
 
@@ -21,8 +21,266 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* 先ほど作成したスタイルをここに丸ごと貼り付けてください */
-        /* （長いので省略しますが、ラズパイ版の <style> 〜 </style> をそのまま入れてOKです） */
+        :root {
+            --primary-color: #333;
+            --accent-color: #007bff;
+            --bg-color: #f4f4f4;
+            --white: #ffffff;
+            --text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            --transition: 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--primary-color);
+            line-height: 1.8;
+            background-color: var(--bg-color);
+            word-break: break-all;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            background-image: url('Sample.png'); 
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5); 
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.1em;
+            text-shadow: var(--text-shadow);
+        }
+
+        .title-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .balloon {
+            position: absolute;
+            top: -20px;
+            left: -30px;
+            padding: 8px 16px;
+            background-color: #f0f0f0;
+            color: #000;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            transform: rotate(-15deg);
+            white-space: nowrap;
+            z-index: 2;
+        }
+
+        .balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 12px solid #f0f0f0;
+        }
+
+        section {
+            padding: clamp(60px, 10vw, 100px) 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .club-name h1 { font-size: 1.8rem; margin-bottom: 0; }
+        .club-name h3 { font-size: 1.1rem; color: #666; margin-top: 0.5rem; }
+
+        .btn-apply {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px clamp(30px, 8vw, 60px);
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: var(--transition);
+            margin-bottom: 40px;
+        }
+
+        .btn-apply:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        .recruit-info {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .recruit-info h3 {
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            margin-top: 0;
+        }
+
+        .advisor-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .advisor-header {
+            background-color: #eee;
+            padding: 15px;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .advisor-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .advisor-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            gap: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .role-label {
+            background-color: #eef;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .coach-button {
+            text-decoration: none;
+            background-color: var(--accent-color);
+            color: var(--white) !important;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .coach-button:hover { background-color: #0056b3; }
+
+        .member-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .member-item {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .member-item a {
+            display: block;
+            padding: 12px 25px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .member-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,123,255,0.2);
+        }
+
+        .gallery-container {
+            background: var(--white);
+            padding: clamp(20px, 5vw, 50px);
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .work-card {
+            margin-bottom: 60px;
+        }
+
+        .work-card img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .advisor-row { flex-direction: column; text-align: center; }
+            .member-item { width: 100%; }
+        }
         
         /* 転送案内用のスタイルだけ追加 */
         .redirect-notice {
@@ -43,7 +301,7 @@
 <body>
 
     <div class="redirect-notice">
-        🚀 展示会場へ移動中（3秒後に自動転送されます）
+        公式ホームページへ移動中（3秒後に自動転送されます）
     </div>
 
     </body>
