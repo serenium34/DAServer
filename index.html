@@ -299,7 +299,97 @@
     </style>
 </head>
 <body>
+    <section id="about" class="fade-in">
+        <h2>About</h2>
+        <div class="club-name">
+            <h1>デジタルアーツ同好会</h1>
+            <h3>Digital Arts Club</h3>
+        </div>
+        <p>
+            私たちは各々のクリエイティブなスキルを発信できる環境づくりを目的としています。<br>
+            イラスト，作曲，演奏，撮影，3Dアートなど<br>
+            「作ってみたけど自己満で終わった」「やってみたいけどひとりじゃちょっと...」<br>
+            そんなあなたにぴったりの環境で私たちと一緒に始めてみませんか？
+        </p>
+    </section>
 
+    <section id="recruit" class="fade-in">
+        <h2>Recruit</h2>
+        <a href="https://docs.google.com/forms/d/..." class="btn-apply" target="_blank">応募ページへ</a>
+
+        <div class="recruit-info">
+            <h3>募集要項<span>（選考あり）</span></h3>
+            <ul>
+                <li><strong>活動内容：</strong>イラスト、3DCG、音楽制作、動画編集、Webデザイン等</li>
+                <li><strong>対象：</strong>学年・学科不問。スキルを活かす場所を探している人</li>
+                <li><strong>持ち物：</strong>やる気と自由な発想</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="advisors" class="fade-in">
+        <h2>Advisors</h2>
+        <div class="advisor-card">
+            <h3 class="advisor-header">顧問紹介</h3>
+            <ul class="advisor-list">
+                <li class="advisor-row">
+                    <span class="role-label">コーチ</span>
+                    <span class="teacher-name">（非公開）</span>
+                    <a href="https://serenium34.github.io/DAServer/toyama.html" class="coach-button">詳細を見る</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="members" class="fade-in">
+        <h2>Members</h2>
+        <ul class="member-list">
+            <li class="member-item"><a href="oishi/oishi.html">Serenium</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/nakao/nakao.html">ミカド</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/hasebe/hasebe.html">Hassky</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/okumura/okumura.html">Colosuke(仮)</a></li>
+            <li class="member-item"><a href="hasebe/hasebe.html">長谷部 凜</a></li>
+            
+            </ul>
+    </section>
+
+    <section id="gallery" class="fade-in">
+        <h2>Works</h2>
+        <div class="gallery-container">
+            <div class="work-card">
+                <h3>電波祭2025「音楽室404」を出店！</h3>
+                <img src="電波祭1.jpg" alt="DJブースの様子">
+                <p>DJブースを設置し、メンバー制作のDTMミュージックをBGMとして公開しました。</p>
+            </div>
+            <div class="work-card">
+                <img src="電波祭2.jpg" alt="花火とギター">
+                <p>ギター演奏に合わせて花火が上がるサウンドビジュアル体験コーナーを提供！</p>
+            </div>
+            <div class="work-card">
+                <img src="電波祭3.jpg" alt="イラスト展示">
+                <p>メンバーによる高クオリティなイラスト展示。多くの方に見ていただけました。</p>
+            </div>
+            <p style="text-align: center; margin-top: 40px; font-weight: bold;">
+                今後も同好会の活動をどんどん紹介していきます！
+            </p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; デジタルアーツ同好会</p>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
     <div class="redirect-notice">
         公式ホームページへ移動中（3秒後に自動転送されます）
     </div>
