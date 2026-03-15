@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>デジタルアーツ同好会 - 公式ホームページ（移転のお知らせ）</title>
+    <title>デジタルアーツ同好会 - 公式ホームページ（移転しました）</title>
     <meta name="description" content="デジタルアーツ同好会の公式サイトは移転いたしました。新しいURLはこちらです：https://trails-packed-router-moisture.trycloudflare.com/">
     
     <link rel="canonical" href="https://trails-packed-router-moisture.trycloudflare.com/">
-
-    <meta http-equiv="refresh" content="10;url=https://trails-packed-router-moisture.trycloudflare.com/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +17,7 @@
         :root {
             --primary-color: #333;
             --accent-color: #007bff;
-            --move-btn-color: #e63946; /* 移転ボタン用の目立つ色 */
+            --move-btn-color: #e63946;
             --bg-color: #f4f4f4;
             --white: #ffffff;
             --text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -36,18 +34,20 @@
             word-break: break-all;
         }
 
+        /* フェードインの設定：JSが動かない場合も考慮して、少し透明度を残すか、クラスが追加されたら表示 */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            visibility: hidden; /* 表示されない問題を回避するため、JSで制御 */
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+            visibility: visible;
         }
 
-        /* ヒーローセクションを移転案内に特化 */
         .hero {
             position: relative;
             height: 100vh;
@@ -56,7 +56,8 @@
             align-items: center;
             color: var(--white);
             text-align: center;
-            background-image: url('Sample.png'); 
+            /* 画像パスを新しいサーバーの絶対パスに変更 */
+            background-image: url('https://trails-packed-router-moisture.trycloudflare.com/Sample.png'); 
             background-size: cover;
             background-position: center;
             overflow: hidden;
@@ -73,71 +74,58 @@
             position: relative;
             z-index: 1;
             padding: 20px;
-            max-width: 800px;
         }
 
         .hero-title {
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: clamp(2.5rem, 10vw, 5rem);
             font-weight: 700;
             margin: 0 0 20px 0;
             text-shadow: var(--text-shadow);
+            line-height: 1.2;
         }
 
-        /* 新しいサイトへのボタン */
         .btn-move-site {
             display: inline-block;
             background-color: var(--move-btn-color);
             color: var(--white);
-            padding: 20px clamp(40px, 10vw, 80px);
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            padding: 18px clamp(30px, 8vw, 60px);
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             transition: var(--transition);
             margin-top: 20px;
-            border: 3px solid var(--white);
+            border: 2px solid var(--white);
         }
 
         .btn-move-site:hover {
             transform: scale(1.05);
             background-color: #ff4d5a;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-        }
-
-        .move-notice-text {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            background: rgba(255,255,255,0.2);
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 5px;
         }
 
         section {
-            padding: clamp(60px, 10vw, 100px) 20px;
-            max-width: 1000px;
+            padding: 80px 20px;
+            max-width: 900px;
             margin: 0 auto;
             text-align: center;
         }
 
         h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            margin-bottom: 40px;
+            font-size: 2rem;
+            margin-bottom: 30px;
             border-bottom: 3px solid var(--primary-color);
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 5px;
         }
 
-        .club-name h1 { font-size: 1.8rem; margin-bottom: 0; }
-        .club-name h3 { font-size: 1.1rem; color: #666; margin-top: 0.5rem; }
-
-        .recruit-info, .advisor-card, .gallery-container {
+        .content-box {
             background: var(--white);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-top: 20px;
+            text-align: left;
+            margin-bottom: 30px;
         }
 
         .member-list {
@@ -147,7 +135,7 @@
 
         .member-item {
             background: var(--white); border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .member-item a {
@@ -155,26 +143,10 @@
             color: var(--primary-color); text-decoration: none; font-weight: bold;
         }
 
-        .member-item:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,123,255,0.2); }
-
         footer {
             background: var(--primary-color); color: var(--white);
-            padding: 40px 20px; text-align: center;
-        }
-
-        /* 下部の案内ポップアップを少し控えめに修正 */
-        .redirect-notice {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 10px 25px;
-            border-radius: 30px;
-            z-index: 100;
-            font-size: 0.85rem;
-            white-space: nowrap;
+            padding: 30px 20px; text-align: center;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -182,26 +154,25 @@
 
     <header class="hero">
         <div class="hero-content">
-            <div class="move-notice-text">SITE RELOCATION</div>
-            <h1 class="hero-title">公式サイトは<br>移転しました</h1>
-            <p>デジタルアーツ同好会の新しいホームページは<br>下記のボタンからアクセスいただけます。</p>
-            
+            <h1 class="hero-title">移転のお知らせ</h1>
+            <p>デジタルアーツ同好会の公式サイトは移転しました。<br>新しいURLは以下の通りです。</p>
             <a href="https://trails-packed-router-moisture.trycloudflare.com/" class="btn-move-site">
-                最新サイトを表示する
+                新サイトへ移動する
             </a>
         </div>
     </header>
 
     <section id="about" class="fade-in">
         <h2>About</h2>
-        <div class="club-name">
-            <h1>デジタルアーツ同好会</h1>
-            <h3>Digital Arts Club</h3>
+        <div class="content-box">
+            <p style="text-align: center; font-weight: bold; font-size: 1.2rem;">
+                デジタルアーツ同好会
+            </p>
+            <p>
+                イラスト、作曲、演奏、3Dアートなど、多岐にわたるクリエイティブな活動を行っています。
+                現在、最新の情報や活動記録は新ホームページにて公開中です。
+            </p>
         </div>
-        <p>
-            イラスト，作曲，演奏，撮影，3Dアートなど<br>
-            クリエイティブな活動の新しい拠点は新サイトへ移行しました。
-        </p>
     </section>
 
     <section id="members" class="fade-in">
@@ -216,20 +187,37 @@
     </section>
 
     <footer>
-        <p>&copy; デジタルアーツ同好会 - 新サイトにて活動継続中</p>
+        <p>&copy; デジタルアーツ同好会</p>
     </footer>
 
     <script>
-        // フェードインアニメーション用
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // フェードイン表示の制御
+        const showElements = () => {
+            const elements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(el => {
+                observer.observe(el);
+                // 万が一表示されない時のためのバックアップ：少しでもスクロールされたら強制表示
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('visible');
                 }
             });
-        }, observerOptions);
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        };
+
+        // DOMの読み込み完了時に実行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', showElements);
+        } else {
+            showElements();
+        }
+    </script>
 
 </body>
 </html>
