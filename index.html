@@ -4,17 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>デジタルアーツ同好会 - 公式ホームページ</title>
-    <meta name="description" content="デジタルアーツ同好会の公式サイトです。以下のメンバーと共に、クリエイティブな活動を行っています。Serenium・ミカド・Hassky・Colosuke(仮)・長谷部 凜">
+    <title>デジタルアーツ同好会 - 公式ホームページ（移転のお知らせ）</title>
+    <meta name="description" content="デジタルアーツ同好会の公式サイトは移転いたしました。新しいURLはこちらです：https://trails-packed-router-moisture.trycloudflare.com/">
     
-    <meta http-equiv="refresh" content="3;url=https://trails-packed-router-moisture.trycloudflare.com">
+    <link rel="canonical" href="https://trails-packed-router-moisture.trycloudflare.com/">
 
-    <script type="text/javascript">
-        // バックアップ用JS転送
-        setTimeout(function(){
-            window.location.href = "https://trails-packed-router-moisture.trycloudflare.com";
-        }, 3000);
-    </script>
+    <meta http-equiv="refresh" content="10;url=https://trails-packed-router-moisture.trycloudflare.com/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +19,7 @@
         :root {
             --primary-color: #333;
             --accent-color: #007bff;
+            --move-btn-color: #e63946; /* 移転ボタン用の目立つ色 */
             --bg-color: #f4f4f4;
             --white: #ffffff;
             --text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -51,6 +47,7 @@
             transform: translateY(0);
         }
 
+        /* ヒーローセクションを移転案内に特化 */
         .hero {
             position: relative;
             height: 100vh;
@@ -69,52 +66,52 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.5); 
+            background: rgba(0, 0, 0, 0.6); 
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
             padding: 20px;
+            max-width: 800px;
         }
 
         .hero-title {
-            font-size: clamp(3rem, 12vw, 8rem);
+            font-size: clamp(2rem, 8vw, 4rem);
             font-weight: 700;
-            margin: 0;
-            letter-spacing: 0.1em;
+            margin: 0 0 20px 0;
             text-shadow: var(--text-shadow);
         }
 
-        .title-wrapper {
-            position: relative;
+        /* 新しいサイトへのボタン */
+        .btn-move-site {
             display: inline-block;
-        }
-
-        .balloon {
-            position: absolute;
-            top: -20px;
-            left: -30px;
-            padding: 8px 16px;
-            background-color: #f0f0f0;
-            color: #000;
-            border-radius: 20px;
+            background-color: var(--move-btn-color);
+            color: var(--white);
+            padding: 20px clamp(40px, 10vw, 80px);
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            text-decoration: none;
+            border-radius: 50px;
             font-weight: bold;
-            font-size: clamp(0.9rem, 3vw, 1.2rem);
-            transform: rotate(-15deg);
-            white-space: nowrap;
-            z-index: 2;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            margin-top: 20px;
+            border: 3px solid var(--white);
         }
 
-        .balloon::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 12px solid #f0f0f0;
+        .btn-move-site:hover {
+            transform: scale(1.05);
+            background-color: #ff4d5a;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .move-notice-text {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 5px;
         }
 
         section {
@@ -135,170 +132,66 @@
         .club-name h1 { font-size: 1.8rem; margin-bottom: 0; }
         .club-name h3 { font-size: 1.1rem; color: #666; margin-top: 0.5rem; }
 
-        .btn-apply {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 15px clamp(30px, 8vw, 60px);
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: var(--transition);
-            margin-bottom: 40px;
-        }
-
-        .btn-apply:hover {
-            background-color: #555;
-            transform: scale(1.05);
-        }
-
-        .recruit-info {
+        .recruit-info, .advisor-card, .gallery-container {
             background: var(--white);
             padding: 30px;
             border-radius: 12px;
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 20px;
         }
-
-        .recruit-info h3 {
-            border-left: 5px solid var(--primary-color);
-            padding-left: 10px;
-            margin-top: 0;
-        }
-
-        .advisor-card {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .advisor-header {
-            background-color: #eee;
-            padding: 15px;
-            margin: 0;
-            font-size: 1.2rem;
-        }
-
-        .advisor-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .advisor-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            gap: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .role-label {
-            background-color: #eef;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .coach-button {
-            text-decoration: none;
-            background-color: var(--accent-color);
-            color: var(--white) !important;
-            padding: 6px 16px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .coach-button:hover { background-color: #0056b3; }
 
         .member-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            list-style: none;
-            padding: 0;
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 15px; list-style: none; padding: 0;
         }
 
         .member-item {
-            background: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: var(--transition);
+            background: var(--white); border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: var(--transition);
         }
 
         .member-item a {
-            display: block;
-            padding: 12px 25px;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
+            display: block; padding: 12px 25px;
+            color: var(--primary-color); text-decoration: none; font-weight: bold;
         }
 
-        .member-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,123,255,0.2);
-        }
-
-        .gallery-container {
-            background: var(--white);
-            padding: clamp(20px, 5vw, 50px);
-            border-radius: 12px;
-            text-align: left;
-        }
-
-        .work-card {
-            margin-bottom: 60px;
-        }
-
-        .work-card img {
-            width: 100%;
-            height: auto;
-            max-height: 500px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+        .member-item:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,123,255,0.2); }
 
         footer {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
+            background: var(--primary-color); color: var(--white);
+            padding: 40px 20px; text-align: center;
         }
 
-        @media (max-width: 480px) {
-            .advisor-row { flex-direction: column; text-align: center; }
-            .member-item { width: 100%; }
-        }
-        
-        /* 転送案内用のスタイルだけ追加 */
+        /* 下部の案内ポップアップを少し控えめに修正 */
         .redirect-notice {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px 25px;
             border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 100;
-            font-size: 0.9rem;
-            border: 2px solid var(--accent-color);
+            font-size: 0.85rem;
+            white-space: nowrap;
         }
     </style>
 </head>
 <body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="move-notice-text">SITE RELOCATION</div>
+            <h1 class="hero-title">公式サイトは<br>移転しました</h1>
+            <p>デジタルアーツ同好会の新しいホームページは<br>下記のボタンからアクセスいただけます。</p>
+            
+            <a href="https://trails-packed-router-moisture.trycloudflare.com/" class="btn-move-site">
+                最新サイトを表示する
+            </a>
+        </div>
+    </header>
+
     <section id="about" class="fade-in">
         <h2>About</h2>
         <div class="club-name">
@@ -306,39 +199,9 @@
             <h3>Digital Arts Club</h3>
         </div>
         <p>
-            私たちは各々のクリエイティブなスキルを発信できる環境づくりを目的としています。<br>
             イラスト，作曲，演奏，撮影，3Dアートなど<br>
-            「作ってみたけど自己満で終わった」「やってみたいけどひとりじゃちょっと...」<br>
-            そんなあなたにぴったりの環境で私たちと一緒に始めてみませんか？
+            クリエイティブな活動の新しい拠点は新サイトへ移行しました。
         </p>
-    </section>
-
-    <section id="recruit" class="fade-in">
-        <h2>Recruit</h2>
-        <a href="https://docs.google.com/forms/d/..." class="btn-apply" target="_blank">応募ページへ</a>
-
-        <div class="recruit-info">
-            <h3>募集要項<span>（選考あり）</span></h3>
-            <ul>
-                <li><strong>活動内容：</strong>イラスト、3DCG、音楽制作、動画編集、Webデザイン等</li>
-                <li><strong>対象：</strong>学年・学科不問。スキルを活かす場所を探している人</li>
-                <li><strong>持ち物：</strong>やる気と自由な発想</li>
-            </ul>
-        </div>
-    </section>
-    
-    <section id="advisors" class="fade-in">
-        <h2>Advisors</h2>
-        <div class="advisor-card">
-            <h3 class="advisor-header">顧問紹介</h3>
-            <ul class="advisor-list">
-                <li class="advisor-row">
-                    <span class="role-label">コーチ</span>
-                    <span class="teacher-name">（非公開）</span>
-                    <a href="https://serenium34.github.io/DAServer/toyama.html" class="coach-button">詳細を見る</a>
-                </li>
-            </ul>
-        </div>
     </section>
 
     <section id="members" class="fade-in">
@@ -349,36 +212,15 @@
             <li class="member-item"><a href="https://serenium34.github.io/DAServer/hasebe/hasebe.html">Hassky</a></li>
             <li class="member-item"><a href="https://serenium34.github.io/DAServer/okumura/okumura.html">Colosuke(仮)</a></li>
             <li class="member-item"><a href="hasebe/hasebe.html">長谷部 凜</a></li>
-            
-            </ul>
+        </ul>
     </section>
 
-    <section id="gallery" class="fade-in">
-        <h2>Works</h2>
-        <div class="gallery-container">
-            <div class="work-card">
-                <h3>電波祭2025「音楽室404」を出店！</h3>
-                <img src="電波祭1.jpg" alt="DJブースの様子">
-                <p>DJブースを設置し、メンバー制作のDTMミュージックをBGMとして公開しました。</p>
-            </div>
-            <div class="work-card">
-                <img src="電波祭2.jpg" alt="花火とギター">
-                <p>ギター演奏に合わせて花火が上がるサウンドビジュアル体験コーナーを提供！</p>
-            </div>
-            <div class="work-card">
-                <img src="電波祭3.jpg" alt="イラスト展示">
-                <p>メンバーによる高クオリティなイラスト展示。多くの方に見ていただけました。</p>
-            </div>
-            <p style="text-align: center; margin-top: 40px; font-weight: bold;">
-                今後も同好会の活動をどんどん紹介していきます！
-            </p>
-        </div>
-    </section>
-    
     <footer>
-        <p>&copy; デジタルアーツ同好会</p>
+        <p>&copy; デジタルアーツ同好会 - 新サイトにて活動継続中</p>
     </footer>
+
     <script>
+        // フェードインアニメーション用
         const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -388,9 +230,6 @@
             });
         }, observerOptions);
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
-    <div class="redirect-notice">
-        公式ホームページへ移動中（3秒後に自動転送されます）
-    </div>
-    </body>
+
+</body>
 </html>
