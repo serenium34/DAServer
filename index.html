@@ -1,21 +1,223 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0a0e18"><title>NewArtsStudio Webレーベル</title><style>
-:root{color-scheme:light dark;--bg:#f3f6fb;--panel:#fff;--soft:#edf1f7;--text:#141a27;--muted:#6b7280;--line:#dbe2ec;--a:#765cff;--b:#19c6ad;--shadow:0 14px 40px #18223a1c}@media(prefers-color-scheme:dark){:root{--bg:#080c15;--panel:#101724;--soft:#172131;--text:#f2f5fb;--muted:#9aa7bc;--line:#27354a;--shadow:0 16px 45px #0007}}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% 0,#765cff22,transparent 30%),var(--bg);color:var(--text);font-family:system-ui,"Noto Sans JP",sans-serif}button,input{font:inherit;color:inherit}.app{max-width:1100px;margin:auto;padding:18px 14px 190px}.head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.brand{display:flex;gap:11px;align-items:center}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;font-weight:900}.brand h1{font-size:20px;margin:0}.brand p{font-size:12px;color:var(--muted);margin:3px 0 0}.grid{display:grid;grid-template-columns:1.4fr .8fr;gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:21px;box-shadow:var(--shadow);overflow:hidden}.bar{padding:17px;display:flex;justify-content:space-between;align-items:center}.bar h2{font-size:16px;margin:0}.muted{font-size:12px;color:var(--muted)}ul{list-style:none;margin:0;padding:0 9px 12px}.track,.qitem{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:10px;padding:9px 8px;border-radius:13px}.track:hover,.track.active,.qitem:hover{background:var(--soft)}.mini,.plain{border:0;background:transparent;cursor:pointer;border-radius:10px}.mini{width:38px;height:38px;background:var(--soft)}.plain{padding:8px;color:var(--muted)}.meta{min-width:0}.title,.artist{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.title{font-weight:750}.artist{font-size:12px;color:var(--muted);margin-top:3px}.acts{display:flex}.empty{text-align:center;color:var(--muted);padding:32px 14px;line-height:1.7}.player{position:fixed;z-index:10;left:max(9px,calc((100vw - 1100px)/2));right:max(9px,calc((100vw - 1100px)/2));bottom:max(9px,env(safe-area-inset-bottom));padding:13px 17px;background:color-mix(in srgb,var(--panel) 90%,transparent);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:23px;box-shadow:0 20px 55px #0005}.pg{display:grid;grid-template-columns:1fr 1.45fr 1fr;align-items:center;gap:16px}.now{display:flex;gap:11px;align-items:center;min-width:0}.cover{width:48px;height:48px;flex:0 0 auto;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;font-size:20px}.controls{display:flex;align-items:center;justify-content:center;gap:6px}.ctl{width:42px;height:42px;border:0;border-radius:50%;background:transparent;cursor:pointer;font-size:19px;position:relative}.ctl.main{width:50px;height:50px;background:var(--text);color:var(--panel)}.ctl.on{color:var(--a);background:#765cff20}.badge{position:absolute;right:2px;bottom:0;font-size:9px;font-weight:900}.seek{display:grid;grid-template-columns:38px 1fr 38px;gap:7px;align-items:center;font-size:10px;color:var(--muted)}input[type=range]{width:100%;accent-color:var(--a)}.vol{display:flex;align-items:center;gap:8px}.toast{position:fixed;z-index:30;top:13px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--panel);padding:10px 14px;border-radius:12px;display:none}.toast.show{display:block}@media(max-width:720px){.app{padding:13px 10px 210px}.grid{grid-template-columns:1fr}.player{padding:11px}.pg{grid-template-columns:1fr}.center{grid-row:2}.vol{display:none}.controls{justify-content:space-between}.track{grid-template-columns:40px minmax(0,1fr) auto}.acts .add{display:none}}
-</style></head><body><div class="toast" id="toast" aria-live="polite"></div><main class="app"><header class="head"><div class="brand"><div class="logo">NA</div><div><h1>NewArtsStudio</h1><p>Digital Arts Music Label</p></div></div></header><div class="grid"><section class="card"><div class="bar"><h2>楽曲</h2><span class="muted" id="count">読込中</span></div><ul id="tracks"><li class="empty">楽曲を読み込んでいます</li></ul></section><aside class="card"><div class="bar"><h2>再生キュー</h2><button class="plain" id="clear">すべて削除</button></div><ul id="queue"><li class="empty">曲の「次へ」または「＋」から追加できます</li></ul></aside></div></main><section class="player"><div class="pg"><div class="now"><div class="cover">♫</div><div class="meta"><div class="title" id="nowTitle">曲を選択してください</div><div class="artist" id="nowArtist">NewArtsStudio</div></div></div><div class="center"><div class="controls"><button class="ctl" id="shuffle" aria-label="シャッフル">⤨</button><button class="ctl" id="prev" aria-label="前の曲">⏮</button><button class="ctl main" id="play" aria-label="再生">▶</button><button class="ctl" id="next" aria-label="次の曲">⏭</button><button class="ctl" id="loop" aria-label="ループ">↻<span class="badge" id="loopBadge"></span></button></div><div class="seek"><span id="cur">0:00</span><input id="seek" type="range" min="0" max="1000" value="0" aria-label="再生位置"><span id="dur">0:00</span></div></div><div class="vol"><span>🔊</span><input id="volume" type="range" min="0" max="1" step=".01" value=".8" aria-label="音量"></div></div></section><audio id="audio" preload="metadata"></audio><script>
-const $=s=>document.querySelector(s),audio=$('#audio'),S={tracks:[],queue:[],current:null,history:[],shuffle:false,loop:0};
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const parse=file=>{const base=file.replace(/\.[^.]+$/,'').replace(/^NAS_/,''),i=base.lastIndexOf('_');return{file,title:i<0?base:base.slice(0,i),artist:i<0?'NewArtsStudio':base.slice(i+1)||'NewArtsStudio'}};
-const fmt=n=>Number.isFinite(n)?`${Math.floor(n/60)}:${String(Math.floor(n%60)).padStart(2,'0')}`:'0:00';
-const toast=m=>{const e=$('#toast');e.textContent=m;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),2200)};
-async function load(){try{const r=await fetch('tracks.json',{cache:'no-store'});if(!r.ok)throw Error();S.tracks=(await r.json()).map(t=>typeof t==='string'?parse(t):t);renderTracks()}catch{$('#tracks').innerHTML='<li class="empty">tracks.jsonを読み込めませんでした</li>';$('#count').textContent='エラー'}}
-function renderTracks(){$('#count').textContent=`${S.tracks.length}曲`;$('#tracks').innerHTML=S.tracks.map((t,i)=>`<li class="track ${S.current?.file===t.file?'active':''}" data-i="${i}"><button class="mini" data-a="play">${S.current?.file===t.file&&!audio.paused?'❚❚':'▶'}</button><div class="meta"><div class="title">${esc(t.title)}</div><div class="artist">${esc(t.artist)}</div></div><div class="acts"><button class="plain" data-a="next">次へ</button><button class="plain add" data-a="add">＋</button></div></li>`).join('')}
-function renderQueue(){const q=$('#queue');q.innerHTML=S.queue.length?S.queue.map((t,i)=>`<li class="qitem"><span>${i+1}</span><div class="meta"><div class="title">${esc(t.title)}</div><div class="artist">${esc(t.artist)}</div></div><button class="plain" data-r="${i}">✕</button></li>`).join(''):'<li class="empty">曲の「次へ」または「＋」から追加できます</li>'}
-function start(t,remember=true){if(!t)return;if(S.current&&remember&&S.current.file!==t.file)S.history.push(S.current);S.current=t;audio.src='music/'+encodeURIComponent(t.file);$('#nowTitle').textContent=t.title;$('#nowArtist').textContent=t.artist;audio.play().catch(()=>toast('音源を再生できません'));renderTracks()}
-function next(){if(S.queue.length){const t=S.queue.shift();renderQueue();start(t);return}if(!S.tracks.length)return;let i=S.current?S.tracks.findIndex(t=>t.file===S.current.file):-1;if(!S.shuffle&&S.loop===0&&i===S.tracks.length-1){audio.currentTime=0;audio.pause();return}if(S.shuffle&&S.tracks.length>1){let n;do n=Math.floor(Math.random()*S.tracks.length);while(n===i);start(S.tracks[n]);return}start(S.tracks[(i+1)%S.tracks.length])}
-function prev(){if(audio.currentTime>4){audio.currentTime=0;return}const t=S.history.pop();if(t)start(t,false);else if(S.current){const i=S.tracks.findIndex(t=>t.file===S.current.file);start(S.tracks[(i-1+S.tracks.length)%S.tracks.length],false)}}
-$('#tracks').addEventListener('click',e=>{const row=e.target.closest('[data-i]'),a=e.target.closest('[data-a]')?.dataset.a;if(!row||!a)return;const t=S.tracks[+row.dataset.i];if(a==='play')S.current?.file===t.file?(audio.paused?audio.play():audio.pause()):start(t);if(a==='next'){S.queue.unshift(t);renderQueue();toast('次に再生します')}if(a==='add'){S.queue.push(t);renderQueue();toast('キューに追加しました')}});
-$('#queue').addEventListener('click',e=>{const b=e.target.closest('[data-r]');if(b){S.queue.splice(+b.dataset.r,1);renderQueue()}});$('#clear').onclick=()=>{S.queue=[];renderQueue()};$('#play').onclick=()=>S.current?(audio.paused?audio.play():audio.pause()):next();$('#next').onclick=next;$('#prev').onclick=prev;
-$('#shuffle').onclick=e=>{S.shuffle=!S.shuffle;e.currentTarget.classList.toggle('on',S.shuffle);toast(`シャッフル ${S.shuffle?'オン':'オフ'}`)};
-$('#loop').onclick=e=>{S.loop=(S.loop+1)%3;e.currentTarget.classList.toggle('on',S.loop>0);$('#loopBadge').textContent=S.loop===1?'ALL':S.loop===2?'1':'';toast(['ループなし','全曲ループ','1曲ループ'][S.loop])};
-$('#seek').oninput=e=>{if(Number.isFinite(audio.duration))audio.currentTime=audio.duration*e.target.value/1000};$('#volume').oninput=e=>audio.volume=+e.target.value;audio.volume=.8;
-audio.ontimeupdate=()=>{$('#cur').textContent=fmt(audio.currentTime);$('#dur').textContent=fmt(audio.duration);$('#seek').value=Number.isFinite(audio.duration)?audio.currentTime/audio.duration*1000:0};audio.onplay=()=>{$('#play').textContent='❚❚';renderTracks()};audio.onpause=()=>{$('#play').textContent='▶';renderTracks()};audio.onended=()=>S.loop===2?start(S.current,false):next();audio.onerror=()=>toast('ファイル名とmusicフォルダを確認してください');load();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>デジタルアーツ同好会 - 公式ホームページ（移転しました）</title>
+    <meta name="description" content="デジタルアーツ同好会の公式サイトは移転いたしました。新しいURLはこちらです：https://fitness-milwaukee-ceiling-veterinary.trycloudflare.com/">
+    
+    <link rel="canonical" href="https://fitness-milwaukee-ceiling-veterinary.trycloudflare.com/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #333;
+            --accent-color: #007bff;
+            --move-btn-color: #e63946;
+            --bg-color: #f4f4f4;
+            --white: #ffffff;
+            --text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            --transition: 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--primary-color);
+            line-height: 1.8;
+            background-color: var(--bg-color);
+            word-break: break-all;
+        }
+
+        /* フェードインの設定：JSが動かない場合も考慮して、少し透明度を残すか、クラスが追加されたら表示 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            visibility: hidden; /* 表示されない問題を回避するため、JSで制御 */
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            /* 画像パスを新しいサーバーの絶対パスに変更 */
+            background-image: url('https://fitness-milwaukee-ceiling-veterinary.trycloudflare.com/Sample.png'); 
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6); 
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            text-shadow: var(--text-shadow);
+            line-height: 1.2;
+        }
+
+        .btn-move-site {
+            display: inline-block;
+            background-color: var(--move-btn-color);
+            color: var(--white);
+            padding: 18px clamp(30px, 8vw, 60px);
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            margin-top: 20px;
+            border: 2px solid var(--white);
+        }
+
+        .btn-move-site:hover {
+            transform: scale(1.05);
+            background-color: #ff4d5a;
+        }
+
+        section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .content-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .member-list {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 15px; list-style: none; padding: 0;
+        }
+
+        .member-item {
+            background: var(--white); border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .member-item a {
+            display: block; padding: 12px 25px;
+            color: var(--primary-color); text-decoration: none; font-weight: bold;
+        }
+
+        footer {
+            background: var(--primary-color); color: var(--white);
+            padding: 30px 20px; text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">移転のお知らせ</h1>
+            <p>デジタルアーツ同好会の公式サイトは移転しました。<br>新しいURLは以下の通りです。</p>
+            <a href="https://fitness-milwaukee-ceiling-veterinary.trycloudflare.com/" class="btn-move-site">
+                新サイトへ移動する
+            </a>
+        </div>
+    </header>
+
+    <section id="about" class="fade-in">
+        <h2>About</h2>
+        <div class="content-box">
+            <p style="text-align: center; font-weight: bold; font-size: 1.2rem;">
+                デジタルアーツ同好会
+            </p>
+            <p>
+                イラスト、作曲、演奏、3Dアートなど、多岐にわたるクリエイティブな活動を行っています。
+                現在、最新の情報や活動記録は新ホームページにて公開中です。
+            </p>
+        </div>
+    </section>
+
+    <section id="members" class="fade-in">
+        <h2>Members</h2>
+        <ul class="member-list">
+            <li class="member-item"><a href="oishi/oishi.html">Serenium</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/nakao/nakao.html">ミカド</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/hasebe/hasebe.html">Hassky</a></li>
+            <li class="member-item"><a href="https://serenium34.github.io/DAServer/okumura/okumura.html">Colosuke(仮)</a></li>
+            <li class="member-item"><a href="hasebe/hasebe.html">長谷部 凜</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; デジタルアーツ同好会</p>
+    </footer>
+
+    <script>
+        // フェードイン表示の制御
+        const showElements = () => {
+            const elements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(el => {
+                observer.observe(el);
+                // 万が一表示されない時のためのバックアップ：少しでもスクロールされたら強制表示
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        // DOMの読み込み完了時に実行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', showElements);
+        } else {
+            showElements();
+        }
+    </script>
+
+</body>
+</html>
